@@ -1,150 +1,161 @@
+<!-- =======================
+SITE FINAL COMPLET (TOUT EN UN)
+HTML + CSS + JS dans un seul fichier
+======================= -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>je suis keutly je deviendrais un  jours un supere developpeur</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Web designer - création de sites modernes">
+<title>WebDesigner Pro</title>
 
-    body {
-      background: #0f172a;
-      color: white;
-    }
+<style>
+body{margin:0;font-family:sans-serif;background:#0f172a;color:white;transition:0.3s}
+.light{background:white;color:black}
+header{display:flex;justify-content:space-between;padding:15px;background:#020617;align-items:center}
+nav a{margin:10px;color:white;text-decoration:none}
+.menu-toggle{display:none;cursor:pointer}
+.hero{height:80vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
+.btn{background:#38bdf8;padding:10px 20px;border:none;border-radius:20px;cursor:pointer}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;padding:20px}
+.card{background:#1e293b;padding:20px;border-radius:10px;transition:0.3s}
+.card:hover{transform:translateY(-10px)}
+.blog{text-align:center;padding:40px}
+form{display:flex;flex-direction:column;gap:10px;padding:20px}
+input,textarea{padding:10px;border-radius:5px;border:none}
+.cart{position:fixed;right:-300px;top:0;width:300px;height:100%;background:black;padding:20px;transition:0.3s}
+.cart.open{right:0}
+.whatsapp{position:fixed;bottom:20px;right:20px;background:green;padding:15px;border-radius:50%;color:white;text-decoration:none}
+.reveal{opacity:0;transform:translateY(50px);transition:1s}
+.reveal.active{opacity:1;transform:translateY(0)}
+footer{text-align:center;padding:20px;background:#020617}
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 50px;
-      background: rgba(255,255,255,0.05);
-      backdrop-filter: blur(10px);
-      position: sticky;
-      top: 0;
-    }
+@media(max-width:768px){
+nav{display:none;flex-direction:column}
+nav.active{display:flex}
+.menu-toggle{display:block}
+}
+</style>
 
-    header h1 {
-      color: #38bdf8;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: white;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #38bdf8;
-    }
-
-    .hero {
-      height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-    }
-
-    .hero h2 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
-      color: #94a3b8;
-    }
-
-    .btn {
-      padding: 12px 25px;
-      border: none;
-      background: #38bdf8;
-      color: black;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #0ea5e9;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 50px;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 15px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #020617;
-      margin-top: 30px;
-      color: #94a3b8;
-    }
-  </style>
 </head>
 <body>
 
 <header>
-  <h1>MonSite</h1>
-  <nav>
-    <a href="#">Accueil</a>
-    <a href="#">Services</a>
-    <a href="#">Contact</a>
-  </nav>
+<h1>WebDesigner</h1>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<nav id="nav">
+<a href="#">Accueil</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#services">Services</a>
+<a href="#contact">Contact</a>
+</nav>
+<div>
+<button onclick="toggleTheme()">🌙</button>
+<button onclick="toggleCart()">🛒 (<span id="cart-count">0</span>)</button>
+</div>
 </header>
 
-<section class="hero">
-  <h2>Bienvenue sur mon site</h2>
-  <p>Un design moderne avec HTML, CSS et JavaScript</p>
-  <button class="btn" onclick="showMessage()">Clique moi</button>
+<section class="hero reveal">
+<h2>Gagne de l'argent avec ton business</h2>
+<p>Sites modernes + clients + revenus</p>
+<button class="btn" onclick="scrollToSection('services')">Commencer</button>
 </section>
 
-<section class="cards">
-  <div class="card">
-    <h3>Rapide</h3>
-    <p>Site optimisé pour la performance.</p>
-  </div>
-  <div class="card">
-    <h3>Moderne</h3>
-    <p>Design propre et élégant.</p>
-  </div>
-  <div class="card">
-    <h3>Responsive</h3>
-    <p>S'adapte à tous les écrans.</p>
-  </div>
+<section id="portfolio" class="cards reveal">
+<div class="card">🔥 Projet Business</div>
+<div class="card">💻 Site e-commerce</div>
+<div class="card">📱 UI moderne</div>
 </section>
+
+<section id="services" class="cards reveal">
+<div class="card">
+<h3>Pack Starter</h3>
+<p>50 000 FCFA</p>
+<button onclick="addToCart('Starter')">Commander</button>
+</div>
+<div class="card">
+<h3>Pack Pro</h3>
+<p>100 000 FCFA</p>
+<button onclick="addToCart('Pro')">Commander</button>
+</div>
+<div class="card">
+<h3>Pack Business</h3>
+<p>250 000 FCFA</p>
+<button onclick="addToCart('Business')">Commander</button>
+</div>
+</section>
+
+<section class="blog reveal">
+<h2>Pourquoi avoir un site ?</h2>
+<p>Augmente tes ventes et ta visibilité 🚀</p>
+</section>
+
+<section id="contact" class="reveal">
+<h2>Contact</h2>
+<form onsubmit="return envoyerMessage()">
+<input type="text" placeholder="Nom" required>
+<input type="email" placeholder="Email" required>
+<textarea placeholder="Message"></textarea>
+<button class="btn">Envoyer</button>
+</form>
+</section>
+
+<a class="whatsapp" href="#" onclick="checkout()">💬</a>
+
+<div id="cart" class="cart">
+<h3>Panier</h3>
+<ul id="cart-items"></ul>
+<button onclick="checkout()">Commander</button>
+</div>
 
 <footer>
-  <p>© 2026 MonSite - Tous droits réservés</p>
+<p>© 2026 WebDesigner - Business</p>
 </footer>
 
 <script>
-  function showMessage() {
-    alert("Bienvenue sur ton premier site web ! 🚀");
-  }
+let cart=[];
+
+function toggleTheme(){document.body.classList.toggle('light');}
+function toggleMenu(){document.getElementById('nav').classList.toggle('active');}
+function scrollToSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+
+function addToCart(item){cart.push(item);updateCart();}
+
+function updateCart(){
+document.getElementById('cart-count').innerText=cart.length;
+let list=document.getElementById('cart-items');
+list.innerHTML='';
+cart.forEach(i=>{
+let li=document.createElement('li');
+li.innerText=i;
+list.appendChild(li);
+});
+localStorage.setItem('cart',JSON.stringify(cart));
+}
+
+function toggleCart(){document.getElementById('cart').classList.toggle('open');}
+
+function checkout(){
+let message="Bonjour, je veux commander : "+cart.join(", ");
+let url="https://wa.me/225XXXXXXXX?text="+encodeURIComponent(message);
+window.open(url,'_blank');
+}
+
+function envoyerMessage(){alert('Message envoyé');return false;}
+
+window.addEventListener('scroll',()=>{
+document.querySelectorAll('.reveal').forEach(el=>{
+let top=el.getBoundingClientRect().top;
+if(top<window.innerHeight-100){el.classList.add('active');}
+});
+});
+
+window.onload=()=>{
+cart=JSON.parse(localStorage.getItem('cart'))||[];
+updateCart();
+};
 </script>
 
 </body>
