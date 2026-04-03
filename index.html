@@ -46,44 +46,44 @@ nav.active{display:flex}
 <h1>WebDesigner</h1>
 <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 <nav id="nav">
-<a href="#">Accueil</a>
+<a href="#accueil">Accueil</a>
 <a href="#portfolio">Portfolio</a>
 <a href="#services">Services</a>
 <a href="#contact">Contact</a>
 </nav>
 <div>
-<button onclick="toggleTheme()">🌙</button>
-<button onclick="toggleCart()">🛒 (<span id="cart-count">0</span>)</button>
+<button onclick="toggleTheme()" title="Changer le thème">🌙</button>
+<button onclick="toggleCart()" title="Voir le panier">🛒 (<span id="cart-count">0</span>)</button>
 </div>
 </header>
 
-<section class="hero reveal">
+<section id="accueil" class="hero reveal">
 <h2>Gagne de l'argent avec ton business</h2>
 <p>Sites modernes + clients + revenus</p>
 <button class="btn" onclick="scrollToSection('services')">Commencer</button>
 </section>
 
 <section id="portfolio" class="cards reveal">
-<div class="card">🔥 Projet Business</div>
-<div class="card">💻 Site e-commerce</div>
-<div class="card">📱 UI moderne</div>
+<div class="card"><a href="#services">🔥 Projet Business</a></div>
+<div class="card"><a href="#services">💻 Site e-commerce</a></div>
+<div class="card"><a href="#services">📱 UI moderne</a></div>
 </section>
 
 <section id="services" class="cards reveal">
 <div class="card">
 <h3>Pack Starter</h3>
 <p>50 000 FCFA</p>
-<button onclick="addToCart('Starter')">Commander</button>
+<button onclick="addToCart('Starter'); scrollToSection('contact')">Commander</button>
 </div>
 <div class="card">
 <h3>Pack Pro</h3>
 <p>100 000 FCFA</p>
-<button onclick="addToCart('Pro')">Commander</button>
+<button onclick="addToCart('Pro'); scrollToSection('contact')">Commander</button>
 </div>
 <div class="card">
 <h3>Pack Business</h3>
 <p>250 000 FCFA</p>
-<button onclick="addToCart('Business')">Commander</button>
+<button onclick="addToCart('Business'); scrollToSection('contact')">Commander</button>
 </div>
 </section>
 
@@ -102,7 +102,7 @@ nav.active{display:flex}
 </form>
 </section>
 
-<a class="whatsapp" href="#" onclick="checkout()">💬</a>
+<a class="whatsapp" href="https://wa.me/225XXXXXXXX" target="_blank">💬</a>
 
 <div id="cart" class="cart">
 <h3>Panier</h3>
